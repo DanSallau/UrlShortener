@@ -1,0 +1,4 @@
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.dll
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.pdb
+F:\urlShortener\UrlShortener\UrlShortener.Domain\obj\Debug\UrlShortener.Domain.dll
+F:\urlShortener\UrlShortener\UrlShortener.Domain\obj\Debug\UrlShortener.Domain.pdb
