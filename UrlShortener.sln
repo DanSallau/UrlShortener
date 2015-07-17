@@ -1,7 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Domain", "UrlShortener.Domain\UrlShortener.Domain.csproj", "{00DC2BB9-B157-4FD6-BD9C-AFC987BE7C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.WebUI", "UrlShortener.WebUI\UrlShortener.WebUI.csproj", "{BACC3394-00C2-463F-A792-D132B84E3725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Test", "UrlShortener.Test\UrlShortener.Test.csproj", "{872CDD73-A796-4445-B4C8-E27058E54DDA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00DC2BB9-B157-4FD6-BD9C-AFC987BE7C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00DC2BB9-B157-4FD6-BD9C-AFC987BE7C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00DC2BB9-B157-4FD6-BD9C-AFC987BE7C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00DC2BB9-B157-4FD6-BD9C-AFC987BE7C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACC3394-00C2-463F-A792-D132B84E3725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACC3394-00C2-463F-A792-D132B84E3725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACC3394-00C2-463F-A792-D132B84E3725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACC3394-00C2-463F-A792-D132B84E3725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872CDD73-A796-4445-B4C8-E27058E54DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872CDD73-A796-4445-B4C8-E27058E54DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872CDD73-A796-4445-B4C8-E27058E54DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872CDD73-A796-4445-B4C8-E27058E54DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

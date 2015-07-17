@@ -29,3 +29,4 @@ F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\System.Web.WebPages.Razor.xm
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\UrlShortener.Domain.pdb
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.dll
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.pdb
+F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.csprojResolveAssemblyReference.cache

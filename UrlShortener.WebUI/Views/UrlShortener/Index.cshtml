@@ -1,0 +1,16 @@
+﻿@model IEnumerable<UrlShortener.Domain.Entities.Url>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (var p in Model) {
+<div class="item">
+<h3>@p.UrlId</h3>
+@p.OriginalUrl
+<h4>@p.UrlCode</h4>
+<h4>@p.PostedDate</h4>
+
+</div>
+}
