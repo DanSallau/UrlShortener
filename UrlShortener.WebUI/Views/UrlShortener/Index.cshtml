@@ -29,7 +29,7 @@
 
 </div>
 <div>
-    <h4>Recent Shortened Urls</h4>
+    <h4>Your Recent Shortened Urls</h4>
 </div>
 <div class="row">
     <div class="col-md-4 hidden-xs">
@@ -57,6 +57,22 @@
          </div>
          
     
+    }
+    @if (Model.urlList.Count() <= 0)
+    {
+        <div class="col-md-4 col-xs-12">
+             <h4></h4>
+         </div>
+         <div class ="col-md-6 col-xs-12">
+             No previous Record exists
+         </div>
+         <div class="col-md-2 col-xs-12">
+              <h4></h4>
+         </div>
+         <div class="clearfix visible-xs-block"></div>
+         <div class="visible-xs">
+             <hr/>
+         </div>
     }
 </div>
 <div class="row">

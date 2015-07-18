@@ -12,5 +12,6 @@ namespace UrlShortener.Domain.Entities
         public string OriginalUrl { get; set; }
         public string UrlCode { get; set; }
         public DateTime PostedDate { get; set; }
+        public string IpAddress { get; set; }
     }
 }

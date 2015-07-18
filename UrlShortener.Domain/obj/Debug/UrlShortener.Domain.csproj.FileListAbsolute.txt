@@ -2,3 +2,8 @@ F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.d
 F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.pdb
 F:\urlShortener\UrlShortener\UrlShortener.Domain\obj\Debug\UrlShortener.Domain.dll
 F:\urlShortener\UrlShortener\UrlShortener.Domain\obj\Debug\UrlShortener.Domain.pdb
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.dll.config
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\EntityFramework.dll
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\EntityFramework.SqlServer.dll
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\EntityFramework.xml
+F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\EntityFramework.SqlServer.xml

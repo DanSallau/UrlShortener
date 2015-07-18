@@ -7,6 +7,7 @@ using System.Web;
 using UrlShortener.Domain.Abstract;
 using UrlShortener.Domain.Entities;
 using Moq;
+using UrlShortener.Domain.Concrete;
 
 namespace UrlShortener.WebUI.Infrastructure
 {
@@ -28,6 +29,7 @@ namespace UrlShortener.WebUI.Infrastructure
 
         private void AddBindings()
         {
+            /*
             Mock<IUrlsRepository> mock = new Mock<IUrlsRepository>();
             mock.Setup(m => m.Urls).Returns(new List<Url>{
             new Url{ OriginalUrl = "www.facebook.com", UrlCode="fcb", PostedDate = DateTime.Today.Date },
@@ -36,6 +38,8 @@ namespace UrlShortener.WebUI.Infrastructure
             }.AsQueryable());
 
             ninjectkernel.Bind<IUrlsRepository>().ToConstant(mock.Object);
+            */
+            ninjectkernel.Bind<IUrlsRepository>().To<EFUrlRepository>();
         }
     }
 }

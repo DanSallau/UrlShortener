@@ -29,4 +29,7 @@ F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\System.Web.WebPages.Razor.xm
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\UrlShortener.Domain.pdb
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.dll
 F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.pdb
-F:\urlShortener\UrlShortener\UrlShortener.WebUI\obj\Debug\UrlShortener.WebUI.csprojResolveAssemblyReference.cache
+F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\EntityFramework.dll
+F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\EntityFramework.xml
+F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\EntityFramework.SqlServer.dll
+F:\urlShortener\UrlShortener\UrlShortener.WebUI\bin\EntityFramework.SqlServer.xml
