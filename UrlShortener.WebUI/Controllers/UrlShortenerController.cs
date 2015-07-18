@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UrlShortener.Domain.Abstract;
+using UrlShortener.WebUI.Models;
+using UrlShortener.Domain.Entities;
 
 namespace UrlShortener.WebUI.Controllers
 {
@@ -19,7 +21,13 @@ namespace UrlShortener.WebUI.Controllers
         }
         public ActionResult Index()
         {
-            return View(repository.Urls);
+            var model =new UrlShortenerModel()
+            { 
+                url = new Url() ,
+                urlList =repository.Urls 
+            };
+
+            return View(model);
         }
 
     }

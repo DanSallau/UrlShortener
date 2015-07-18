@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/site.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <div class="navbar-brand"><a class="navbar-brand" href="/">UrlShortener</a></div>
+              <h6 class="text-center">Shorten Long Url</h6>
+              </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="/">Home</a></li>
+            
+
+              </ul>
+            
+           @*@Html.Partial("_LoginPartialPage")*@
+        </div>
+      </div>
+  </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="container text-center">
+        <p>&copy; 2015 UrlShortener by Nuru Salihu </p>
+
+    </footer>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+</html>

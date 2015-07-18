@@ -1,16 +1,64 @@
-﻿@model IEnumerable<UrlShortener.Domain.Entities.Url>
+﻿@model UrlShortener.WebUI.Models.UrlShortenerModel
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<h2>Index</h2>
-@foreach (var p in Model) {
-<div class="item">
-<h3>@p.UrlId</h3>
-@p.OriginalUrl
-<h4>@p.UrlCode</h4>
-<h4>@p.PostedDate</h4>
+<div class="row">
 
 </div>
-}
+<div class="row">
+    <div class="jumbotron">
+        <h1>Url Shortener</h1>
+        <p>Shorten your Urls</p>
+        @using (Html.BeginForm("ShortURl", "UrlShortener", FormMethod.Post, new { @class = "form-group" }))
+        {
+            <div class="input-group">
+                 @Html.TextBoxFor(x=>x.url.UrlCode,new {@class="form-control"}) 
+                <span class="input-group-btn">
+		           <button class="btn btn-default" type="submit">Shorten</button>
+			   </span>
+            </div>
+            
+             
+ 
+        }
+    </div>
+       
+
+</div>
+<div>
+    <h4>Recent Shortened Urls</h4>
+</div>
+<div class="row">
+    <div class="col-md-4 hidden-xs">
+             <h4><b>Short Url</b></h4>
+         </div>
+         <div class ="col-md-6 hidden-xs">
+             <b>Original Url</b>
+         </div>
+         <div class="col-md-2 hidden-xs">
+              <h4><b>Posted On</b></h4>
+         </div>
+     @foreach (var p in Model.urlList) {
+         <div class="col-md-4 col-xs-12">
+             <h4>@p.UrlCode</h4>
+         </div>
+         <div class ="col-md-6 col-xs-12">
+             @p.OriginalUrl
+         </div>
+         <div class="col-md-2 col-xs-12">
+              <h4>@p.PostedDate.ToShortDateString()</h4>
+         </div>
+         <div class="clearfix visible-xs-block"></div>
+         <div class="visible-xs">
+             <hr/>
+         </div>
+         
+    
+    }
+</div>
+<div class="row">
+
+</div>
