@@ -35,9 +35,11 @@ namespace UrlShortener.WebUI.Controllers
         [HttpPost]
         public ActionResult ShortenURl(UrlShortenerModel model)
         {
+            
             var ip = GetVisitorIpAddress();
             bool succes = false;
             var UrlLink = new Url { OriginalUrl = model.strUrl};
+
             if (ModelState.IsValid)
             {
                 UrlLink.IpAddress = ip;
@@ -59,11 +61,29 @@ namespace UrlShortener.WebUI.Controllers
             }
             else
             {
+                foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError error in modelState.Errors)
+                    {
+                        if (error.ErrorMessage.Contains("Record Exist, See the first list"))
+                        {
+                            model = new UrlShortenerModel()
+                            {
+                                strUrl = UrlLink.OriginalUrl,
+                                urlList = repository.Urls.Where(x => x.IpAddress.Equals(ip)).OrderByDescending(x => x.OriginalUrl == model.strUrl)
+                            };
+
+                            return View("Index", model);
+                        }
+
+                    }
+                }
                 model = new UrlShortenerModel()
                 {
                     strUrl = UrlLink.OriginalUrl,
                     urlList = repository.Urls.Where(x => x.IpAddress.Equals(ip)).OrderByDescending(x => x.PostedDate)
                 };
+
             }
 
             return View("Index",model);
