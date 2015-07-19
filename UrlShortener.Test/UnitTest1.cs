@@ -51,6 +51,27 @@ namespace UrlShortener.Test
             Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
         [TestMethod]
+        public void Test_Create_Without_Validation_Error()
+        {
+            // Arrange
+            Mock<IUrlsRepository> mock = new Mock<IUrlsRepository>();
+            mock.Setup(u => u.Urls).Returns(new Url[] { 
+                new Url{ UrlId = 0, UrlCode = "TYUR", OriginalUrl="https://fluentvalidation.com", IpAddress="127.0.0.1", PostedDate = DateTime.Now},
+                new Url{ UrlId = 1, UrlCode = "TwUR", OriginalUrl="https://facebook.com", IpAddress="127.0.0.1", PostedDate = DateTime.Now},
+                new Url{ UrlId = 2, UrlCode = "TkUR", OriginalUrl="https://youtube.com/", IpAddress="127.0.0.1", PostedDate = DateTime.Now}
+            }.AsQueryable());
+
+            UrlShortenerController controller = new UrlShortenerController(mock.Object);
+            UrlShortenerModel model = new UrlShortenerModel();
+
+            // Act
+            ActionResult result = controller.ShortenURl(model);
+
+            // Assert , if our validation no error, it saves and return redirect to 
+            //index which is of ViewResult type.
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+        [TestMethod]
         public void Index_Contains_All_Urls_By_IP()
         {
             //Old Not valid for the controller model was changed.
@@ -101,15 +122,6 @@ namespace UrlShortener.Test
             Assert.IsFalse(val.notExist("https://www.facebook.com/"));
 
         }
-        [TestMethod]
-        public void Should_have_error_when_Url_is_null()
-        {
-            val.ShouldHaveValidationErrorFor(Link=>Link.strUrl, null as string);
-        }
-        [TestMethod]
-        public void Should_not_have_error_when_Url_is_specified()
-        {
-            val.ShouldHaveValidationErrorFor(Link => Link.strUrl, "StringNotReallyAUrl");
-        }
+      
     }
 }

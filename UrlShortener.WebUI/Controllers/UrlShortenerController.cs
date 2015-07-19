@@ -26,6 +26,8 @@ namespace UrlShortener.WebUI.Controllers
         {
             //Default controller
             var ip = GetVisitorIpAddress();
+
+            //var ip = "127.0.0.1"; set the ip value to test
             var model = new UrlShortenerModel()
             {
                 strUrl = null,
@@ -39,12 +41,17 @@ namespace UrlShortener.WebUI.Controllers
         {
             //This is a Post method and handles Form submision .
             //Its responsible to collecting the Url submission and shortening.
+           
             var ip = GetVisitorIpAddress();
+
+            //To test the ModelState.Error in UnitTEst, hard code ip.
+            //var ip = "127.0.0.1";
             bool succes = false;
             var UrlLink = new Url { OriginalUrl = model.strUrl};
 
             if (ModelState.IsValid)// check if the form validation is correct
             {
+                //Set the ip value and postAddress here before we add to the DB
                 UrlLink.IpAddress = ip;
                 UrlLink.PostedDate = DateTime.Now;
                 succes = repository.AddUrl(UrlLink);
