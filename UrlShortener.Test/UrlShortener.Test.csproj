@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UrlShortener.WebUI\bin\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UrlShortener.WebUI\bin\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.Contrib.0.3\lib\Moq.dll</HintPath>
     </Reference>
@@ -45,10 +53,12 @@
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="UrlShortener.Domain">
       <HintPath>..\UrlShortener.Domain\bin\Debug\UrlShortener.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="UrlShortener.WebUI">
+    <Reference Include="UrlShortener.WebUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\UrlShortener.WebUI\bin\UrlShortener.WebUI.dll</HintPath>
     </Reference>
   </ItemGroup>

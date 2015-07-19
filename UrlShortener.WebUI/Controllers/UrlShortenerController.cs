@@ -18,11 +18,13 @@ namespace UrlShortener.WebUI.Controllers
         private IUrlsRepository repository;
         public UrlShortenerController(IUrlsRepository repo)
         {
+            //Inject Dependency.
             repository = repo;
         }
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
+            //Default controller
             var ip = GetVisitorIpAddress();
             var model = new UrlShortenerModel()
             {
@@ -35,12 +37,13 @@ namespace UrlShortener.WebUI.Controllers
         [HttpPost]
         public ActionResult ShortenURl(UrlShortenerModel model)
         {
-            
+            //This is a Post method and handles Form submision .
+            //Its responsible to collecting the Url submission and shortening.
             var ip = GetVisitorIpAddress();
             bool succes = false;
             var UrlLink = new Url { OriginalUrl = model.strUrl};
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)// check if the form validation is correct
             {
                 UrlLink.IpAddress = ip;
                 UrlLink.PostedDate = DateTime.Now;
@@ -61,6 +64,7 @@ namespace UrlShortener.WebUI.Controllers
             }
             else
             {
+                //When Record exist error is encountered, we reshuffle the records as shown below
                 foreach (ModelState modelState in ViewData.ModelState.Values)
                 {
                     foreach (ModelError error in modelState.Errors)
@@ -90,6 +94,8 @@ namespace UrlShortener.WebUI.Controllers
         }
         public ActionResult ly(string urlcode)
         {
+            //The method responsble for redirecting and translating UrlCode to the original url
+
             string link = repository.Urls.FirstOrDefault(x => x.UrlCode == urlcode).OriginalUrl;
 
             return Redirect(link);
