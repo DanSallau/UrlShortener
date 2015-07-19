@@ -10,5 +10,8 @@ namespace UrlShortener.Domain.Abstract
     public interface IUrlsRepository
     {
         IQueryable<Url> Urls { get; }
+
+        bool AddUrl(Url url);
+
     }
 }

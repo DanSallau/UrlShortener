@@ -12,15 +12,18 @@
     <div class="jumbotron">
         <h1>Url Shortener</h1>
         <p>Shorten your Urls</p>
-        @using (Html.BeginForm("ShortURl", "UrlShortener", FormMethod.Post, new { @class = "form-group" }))
+        @using (Html.BeginForm("ShortenURl", "UrlShortener", FormMethod.Post, new { @class = "form-group" }))
         {
             <div class="input-group">
-                 @Html.TextBoxFor(x=>x.url.UrlCode,new {@class="form-control"}) 
+                 @Html.TextBoxFor(x=>x.strUrl,new {@class="form-control"})
+                
                 <span class="input-group-btn">
 		           <button class="btn btn-default" type="submit">Shorten</button>
+                 
 			   </span>
+                 
             </div>
-            
+                @Html.ValidationMessageFor(x => x.strUrl, null, new { @class="text-danger"}) 
              
  
         }
@@ -43,10 +46,11 @@
          </div>
      @foreach (var p in Model.urlList) {
          <div class="col-md-4 col-xs-12">
-             <h4>@p.UrlCode</h4>
+            @* <h4>@Url.Action("ly","ly", new { urlcode=@p.UrlCode}, Request.Url.Scheme)</h4>*@
+             <h4>@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))@p.UrlCode</h4>
          </div>
          <div class ="col-md-6 col-xs-12">
-             @p.OriginalUrl
+             <a href="@p.OriginalUrl" target="_blank">@p.OriginalUrl</a>
          </div>
          <div class="col-md-2 col-xs-12">
               <h4>@p.PostedDate.ToShortDateString()</h4>

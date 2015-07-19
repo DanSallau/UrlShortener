@@ -7,6 +7,7 @@ using UrlShortener.Domain.Abstract;
 using UrlShortener.WebUI.Models;
 using UrlShortener.Domain.Entities;
 using System.Net;
+ 
 
 namespace UrlShortener.WebUI.Controllers
 {
@@ -15,23 +16,64 @@ namespace UrlShortener.WebUI.Controllers
         //
         // GET: /UrlShortener/
         private IUrlsRepository repository;
-
         public UrlShortenerController(IUrlsRepository repo)
         {
             repository = repo;
         }
+        [HttpGet]
         public ActionResult Index()
         {
             var ip = GetVisitorIpAddress();
-            
-
-            var model =new UrlShortenerModel()
-            { 
-                url = new Url() ,
-                urlList =repository.Urls.Where(x=>x.IpAddress.Contains(ip)).OrderByDescending(x=>x.PostedDate) 
+            var model = new UrlShortenerModel()
+            {
+                strUrl = null,
+                urlList = repository.Urls.Where(x => x.IpAddress.Contains(ip)).OrderByDescending(x => x.PostedDate)
             };
 
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult ShortenURl(UrlShortenerModel model)
+        {
+            var ip = GetVisitorIpAddress();
+            bool succes = false;
+            var UrlLink = new Url { OriginalUrl = model.strUrl};
+            if (ModelState.IsValid)
+            {
+                UrlLink.IpAddress = ip;
+                UrlLink.PostedDate = DateTime.Now;
+                succes = repository.AddUrl(UrlLink);
+                if (succes)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("Fail", "Adding Url failed");
+                    model = new UrlShortenerModel()
+                    {
+                        strUrl = UrlLink.OriginalUrl,
+                        urlList = repository.Urls.Where(x => x.IpAddress.Equals(ip)).OrderByDescending(x => x.PostedDate)
+                    };
+                }
+            }
+            else
+            {
+                model = new UrlShortenerModel()
+                {
+                    strUrl = UrlLink.OriginalUrl,
+                    urlList = repository.Urls.Where(x => x.IpAddress.Equals(ip)).OrderByDescending(x => x.PostedDate)
+                };
+            }
+
+            return View("Index",model);
+        }
+        public ActionResult ly(string urlcode)
+        {
+            string link = repository.Urls.FirstOrDefault(x => x.UrlCode == urlcode).OriginalUrl;
+
+            return Redirect(link);
+
         }
         //Get Visitor IP address method
         private string GetVisitorIpAddress()
@@ -46,7 +88,6 @@ namespace UrlShortener.WebUI.Controllers
 
             return stringIpAddress;
         }
-
         //Get Lan Connected IP address method
         private string GetLanIPAddress()
         {

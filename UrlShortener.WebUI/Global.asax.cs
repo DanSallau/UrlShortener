@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using UrlShortener.WebUI.Infrastructure;
+using FluentValidation.Mvc;
 
 namespace UrlShortener.WebUI
 {
@@ -22,6 +23,8 @@ namespace UrlShortener.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            FluentValidationModelValidatorProvider.Configure();
+            
         }
     }
 }
