@@ -4,7 +4,6 @@ F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\UrlShortener.Test.pdb
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\Moq.Contrib.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\Moq.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\Ninject.dll
-F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\UrlShortener.Domain.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\UrlShortener.WebUI.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\EntityFramework.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\FluentValidation.dll
@@ -39,6 +38,9 @@ F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\pt\FluentValidation.res
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\ru\FluentValidation.resources.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\sv\FluentValidation.resources.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\tr\FluentValidation.resources.dll
-F:\urlShortener\UrlShortener\UrlShortener.Test\obj\Debug\UrlShortener.Test.csprojResolveAssemblyReference.cache
 F:\urlShortener\UrlShortener\UrlShortener.Test\obj\Debug\UrlShortener.Test.dll
 F:\urlShortener\UrlShortener\UrlShortener.Test\obj\Debug\UrlShortener.Test.pdb
+F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\EntityFramework.SqlServer.dll
+F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\EntityFramework.SqlServer.xml
+F:\urlShortener\UrlShortener\UrlShortener.Test\bin\Debug\UrlShortener.Domain.dll
+F:\urlShortener\UrlShortener\UrlShortener.Test\obj\Debug\UrlShortener.Test.csprojResolveAssemblyReference.cache
