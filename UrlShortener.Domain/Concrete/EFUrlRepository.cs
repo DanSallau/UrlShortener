@@ -12,7 +12,7 @@ namespace UrlShortener.Domain.Concrete
 {
     public class EFUrlRepository : IUrlsRepository
     {
-        private EFDbContext context = new EFDbContext();
+        public EFDbContext context = new EFDbContext();
         private Security security = new Security();
         public IQueryable<Url> Urls
         {

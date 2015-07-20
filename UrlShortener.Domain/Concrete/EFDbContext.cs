@@ -10,6 +10,6 @@ namespace UrlShortener.Domain.Concrete
 {
     public class EFDbContext:DbContext
     {
-        public DbSet<Url> Urls { get; set; }
+        public virtual IDbSet<Url> Urls { get; set; }
     }
 }

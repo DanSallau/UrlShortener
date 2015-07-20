@@ -30,4 +30,3 @@ F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\pt\FluentValidation.r
 F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\ru\FluentValidation.resources.dll
 F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\sv\FluentValidation.resources.dll
 F:\urlShortener\UrlShortener\UrlShortener.Domain\bin\Debug\tr\FluentValidation.resources.dll
-F:\urlShortener\UrlShortener\UrlShortener.Domain\obj\Debug\UrlShortener.Domain.csprojResolveAssemblyReference.cache
