@@ -17,11 +17,15 @@ namespace UrlShortener.WebUI.Infrastructure
 
         public NinjectControllerFactory()
         {
+            //create object of the ninject kernel
             ninjectkernel = new StandardKernel();
+            //We then add our bindings that explain how our controllers call
+            //should be handled
             AddBindings();
         }
         protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
         {
+            //Each page request comes here first, the controller name is then return as requested
             return controllerType == null
                 ? null
                 : (IController)ninjectkernel.Get(controllerType);
@@ -39,6 +43,9 @@ namespace UrlShortener.WebUI.Infrastructure
 
             ninjectkernel.Bind<IUrlsRepository>().ToConstant(mock.Object);
             */
+
+            //Here we inject our Interface in to the DBcontext
+            //In other word, we bind our DB with our Model class here
             ninjectkernel.Bind<IUrlsRepository>().To<EFUrlRepository>();
         }
     }

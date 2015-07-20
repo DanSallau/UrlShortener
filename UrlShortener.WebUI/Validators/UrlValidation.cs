@@ -11,7 +11,7 @@ namespace UrlShortener.WebUI.Validators
     public class UrlValidation: AbstractValidator<UrlShortenerModel> 
     {
         Uri uriResult;
-        private EFDbContext context;
+        public EFDbContext context;
         public UrlValidation()
         {
             //Validate the Form using FluentValidation
@@ -36,7 +36,6 @@ namespace UrlShortener.WebUI.Validators
         {
             //Check if The Url Exist . This is to stop replication of Urls.
             bool exist = context.Urls.Any(x => x.OriginalUrl == url);
-
             return (exist == false);
         }
     }

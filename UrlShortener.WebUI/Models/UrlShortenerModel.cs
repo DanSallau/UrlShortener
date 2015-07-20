@@ -8,7 +8,7 @@ using UrlShortener.WebUI.Validators;
 
 namespace UrlShortener.WebUI.Models
 {
-    [Validator(typeof(UrlValidation))]
+    [Validator(typeof(UrlValidation))] // Tells the model to refer to the class UrlValidation for validation
     public class UrlShortenerModel
     {
         //The Model for the Home form. The Url shortener form.

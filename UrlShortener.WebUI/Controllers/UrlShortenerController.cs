@@ -16,21 +16,22 @@ namespace UrlShortener.WebUI.Controllers
         //
         // GET: /UrlShortener/
         private IUrlsRepository repository;
+        public static string ip;
         public UrlShortenerController(IUrlsRepository repo)
         {
             //Inject Dependency.
             repository = repo;
+            // If ip is not null, may b it comes form testing class otherwise set the ip.
+            ip = ip == null ? GetVisitorIpAddress() : ip;
         }
         [HttpGet]
         public ViewResult Index()
         {
-            //Default controller
-            var ip = GetVisitorIpAddress();
-
-            //var ip = "127.0.0.1"; set the ip value to test
+            //Default or home controller, a first visit to our site calls this controller.
             var model = new UrlShortenerModel()
             {
                 strUrl = null,
+                //Select and order our list using Linq
                 urlList = repository.Urls.Where(x => x.IpAddress.Contains(ip)).OrderByDescending(x => x.PostedDate)
             };
 
@@ -41,13 +42,9 @@ namespace UrlShortener.WebUI.Controllers
         {
             //This is a Post method and handles Form submision .
             //Its responsible to collecting the Url submission and shortening.
-           
-            var ip = GetVisitorIpAddress();
 
-            //To test the ModelState.Error in UnitTEst, hard code ip.
-            //var ip = "127.0.0.1";
             bool succes = false;
-            var UrlLink = new Url { OriginalUrl = model.strUrl};
+            var UrlLink = new Url { OriginalUrl = model.strUrl };
 
             if (ModelState.IsValid)// check if the form validation is correct
             {
@@ -57,10 +54,13 @@ namespace UrlShortener.WebUI.Controllers
                 succes = repository.AddUrl(UrlLink);
                 if (succes)
                 {
+                    // If Add url succeed, return redirect to our Index action method
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    //If action fails, it may be due to db error. Add the erro
+                    //and populate the text box with the keyed in text to avoid data loss.
                     ModelState.AddModelError("Fail", "Adding Url failed");
                     model = new UrlShortenerModel()
                     {
@@ -72,6 +72,7 @@ namespace UrlShortener.WebUI.Controllers
             else
             {
                 //When Record exist error is encountered, we reshuffle the records as shown below
+                //We loop through the errors to determine if record exist error is returned.
                 foreach (ModelState modelState in ViewData.ModelState.Values)
                 {
                     foreach (ModelError error in modelState.Errors)
@@ -83,12 +84,15 @@ namespace UrlShortener.WebUI.Controllers
                                 strUrl = UrlLink.OriginalUrl,
                                 urlList = repository.Urls.Where(x => x.IpAddress.Equals(ip)).OrderByDescending(x => x.OriginalUrl == model.strUrl)
                             };
-
+                            //We Reshuffle the records bringing the existing record top
                             return View("Index", model);
                         }
 
                     }
                 }
+                //If record do not exist, perhaps the error might be that the text box is empty.
+                // the text provided is not a valid link, so we refer the user back to the index 
+                //retaining which ever text is provided 
                 model = new UrlShortenerModel()
                 {
                     strUrl = UrlLink.OriginalUrl,
@@ -96,8 +100,8 @@ namespace UrlShortener.WebUI.Controllers
                 };
 
             }
-
-            return View("Index",model);
+            // Finally return the user and his data back to the same page
+            return View("Index", model);
         }
         public ActionResult ly(string urlcode)
         {
@@ -112,6 +116,9 @@ namespace UrlShortener.WebUI.Controllers
         private string GetVisitorIpAddress()
         {
             string stringIpAddress;
+
+            //Incase user is coming from a proxy, we seach the ip in the html header 
+            //Through the HTTP_X_FORWARDED_FOR
             stringIpAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (stringIpAddress == null) //may be the HTTP_X_FORWARDED_FOR is null
