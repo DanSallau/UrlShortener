@@ -21,13 +21,13 @@ namespace UrlShortener.WebUI.Controllers
         {
             //Inject Dependency.
             repository = repo;
-            // If ip is not null, may b it comes form testing class otherwise set the ip.
-            ip = ip == null ? GetVisitorIpAddress() : ip;
+
         }
         [HttpGet]
         public ViewResult Index()
         {
             //Default or home controller, a first visit to our site calls this controller.
+            ip = ip == null ? GetVisitorIpAddress() : ip;
             var model = new UrlShortenerModel()
             {
                 strUrl = null,
@@ -44,6 +44,8 @@ namespace UrlShortener.WebUI.Controllers
             //Its responsible to collecting the Url submission and shortening.
 
             bool succes = false;
+
+            ip = ip == null ? GetVisitorIpAddress() : ip;
             var UrlLink = new Url { OriginalUrl = model.strUrl };
 
             if (ModelState.IsValid)// check if the form validation is correct
