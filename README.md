@@ -117,3 +117,7 @@ The GetControllerInstance method above serve the user with the controller reques
             
         }
 </pre>
+
+# Contribution
+
+The project is solely developed and maintained by Nuru Salihu Abdullahi
